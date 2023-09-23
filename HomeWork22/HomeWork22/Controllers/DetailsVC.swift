@@ -11,7 +11,7 @@ class DetailsVC: UIViewController {
     var index: Int?
     var deviceM: ModelDevices?
 
-    @IBOutlet var mealStackView: UIStackView!
+    @IBOutlet var stackView: UIStackView!
     @IBOutlet var nameDevice: UILabel!
     @IBOutlet var imageDevice: UIImageView!
     @IBOutlet var priceDevice: UILabel!
@@ -35,8 +35,6 @@ class DetailsVC: UIViewController {
 
     private func updateUI(with size: CGSize) {
         title = "Device details"
-        let isVertival = size.width < size.height
-        mealStackView.axis = isVertival ? .vertical : .horizontal
         guard let deviсeModel = deviceM else { return }
         imageDevice.image = deviсeModel.image
         nameDevice.text = deviсeModel.name
@@ -44,8 +42,9 @@ class DetailsVC: UIViewController {
         priceDevice.text = deviсeModel.price.description + " BYN"
         showReviewBtn.setTitle("View (\(deviсeModel.feedBacks.count)) reviews", for: .normal)
         showReviewBtn.isEnabled = deviсeModel.feedBacks.count != 0
+        imageDevice.layer.cornerRadius = 25
     }
-    
+
     @IBAction func viewAllReviewsBtn(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let reviewVC = storyboard.instantiateViewController(withIdentifier: "AllReviewsTVC") as? AllReviewsTVC else { return }

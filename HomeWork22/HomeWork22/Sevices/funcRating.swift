@@ -15,7 +15,7 @@ final class CalculateRating {
         var countStars = ""
         if device.feedBacks.count != 0 {
             for i in 0 ..< device.feedBacks.count {
-                rating += device.feedBacks[i].mark
+                rating += device.feedBacks[i].marker
             }
             rating = rating / Double(device.feedBacks.count)
             let r = lround(rating)

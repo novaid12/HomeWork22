@@ -17,7 +17,6 @@ class AllReviewsTVC: UITableViewController {
 
     // MARK: - Table view data source
 
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return feedback!.count
     }
@@ -25,14 +24,19 @@ class AllReviewsTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewsCell", for: indexPath) as! ReviewsCell
         let mark = "⭐️"
-        cell.nameLbl.text = feedback?[indexPath.row].name
-        for _ in 0 ..< Int(feedback![indexPath.row].mark) {
-            cell.ratingLbl.text! += mark
+        let feedB = feedback?[indexPath.row]
+        cell.nameLbl.text = feedB?.name
+        cell.ratingLbl.text = Int(feedB!.marker) == 0 ? mark : lol()
+        func lol() -> String {
+            var a = ""
+            for _ in 0 ..< Int(feedB!.marker) {
+                a += mark
+            }
+            return a
         }
         cell.textLbl.numberOfLines = 0
-        cell.textLbl.text = feedback?[indexPath.row].text
+        cell.textLbl.text = feedB?.text
 
         return cell
     }
-
 }

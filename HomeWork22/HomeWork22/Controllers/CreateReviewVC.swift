@@ -17,6 +17,7 @@ class CreateReviewVC: UIViewController, UITextViewDelegate {
     @IBOutlet var priceDevice: UILabel!
     @IBOutlet var ratingDevice: UILabel!
 
+    @IBOutlet var lbl: UILabel!
     @IBOutlet var saveDataBtn: UIButton!
     @IBOutlet var nameUser: UITextField!
     @IBOutlet var feedbackUser: UITextView!
@@ -36,7 +37,9 @@ class CreateReviewVC: UIViewController, UITextViewDelegate {
     func textViewDidChange(_ feedbckUser: UITextView) {
         let currentText = feedbckUser.text ?? ""
         let currentLength = currentText.count
-        saveDataBtn.isEnabled = currentLength > 20 ? true : false
+        let boolean = currentLength > 20 ? true : false
+        lbl.isHidden = boolean
+        saveDataBtn.isEnabled = boolean
     }
 
     private func setupUI() {
@@ -77,7 +80,11 @@ class CreateReviewVC: UIViewController, UITextViewDelegate {
     }
 
     @IBAction func saveData(_ sender: Any) {
-        let feedback = Feedback(name: nameUser.text ?? "Unknown", text: feedbackUser.text, mark: Double(ratingUser.selectedSegmentIndex))
+        var name = ""
+        if nameUser.text == "" {
+            name = "Unknown"
+        } else { name = nameUser.text! }
+        let feedback = Feedback(name: name, text: feedbackUser.text, marker: Double(ratingUser.selectedSegmentIndex))
         DevicesData.shared.devices[index!].feedBacks.append(feedback)
         navigationController?.popViewController(animated: true)
     }
