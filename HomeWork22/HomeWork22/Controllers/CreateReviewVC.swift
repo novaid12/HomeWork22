@@ -7,9 +7,9 @@
 
 import UIKit
 
-class CreateReviewVC: UIViewController {
+class CreateReviewVC: UIViewController, UITextViewDelegate {
     var index: Int?
-    var section: Int?
+//    var section: Int?
     var deviceModel: ModelDevices?
 
     @IBOutlet var scrollView: UIScrollView!
@@ -18,14 +18,42 @@ class CreateReviewVC: UIViewController {
     @IBOutlet var priceDevice: UILabel!
     @IBOutlet var ratingDevice: UILabel!
 
+    @IBOutlet var saveDataBtn: UIButton!
+    @IBOutlet var nameUser: UITextField!
+    @IBOutlet var feedbackUser: UITextView!
+
+    @IBOutlet var ratingUser: UISegmentedControl!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        feedbackUser.delegate = self
+        setupUI()
+    }
+
     override func viewWillAppear(_ animated: Bool) {
+        setupUI()
+    }
+
+    func textViewDidChange(_ feedbckUser: UITextView) {
+        let currentText = feedbckUser.text ?? ""
+        let currentLength = currentText.count
+        saveDataBtn.isEnabled = currentLength > 20 ? true : false
+    }
+
+    private func setupUI() {
         guard let deviсeM = deviceModel else { return }
         imageDevice.image = deviсeM.image
         nameDevice.text = deviсeM.name
-        ratingDevice.text = deviсeM.rating
+        ratingDevice.text = CalculateRating.funcRating(index: index!)
         priceDevice.text = deviсeM.price.description + " BYN"
         hideKeyboardWhenTappedAround()
         startKeyboardObserver()
+        nameUser.layer.borderWidth = 1
+        nameUser.layer.borderColor = CGColor(genericCMYKCyan: 1, magenta: 1, yellow: 1, black: 1, alpha: 1)
+        nameUser.layer.cornerRadius = 5
+        feedbackUser.layer.borderWidth = 1
+        feedbackUser.layer.borderColor = CGColor(genericCMYKCyan: 1, magenta: 1, yellow: 1, black: 1, alpha: 1)
+        feedbackUser.layer.cornerRadius = 5
         navigationController?.navigationBar.isHidden = true
     }
 
@@ -49,13 +77,11 @@ class CreateReviewVC: UIViewController {
         scrollView.scrollIndicatorInsets = contentInsets
     }
 
-    /*
-     // MARK: - Navigation
+   
 
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         // Get the new view controller using segue.destination.
-         // Pass the selected object to the new view controller.
-     }
-     */
+    @IBAction func saveData(_ sender: Any) {
+        let feedback = Feedback(name: nameUser.text ?? "Unknown", text: feedbackUser.text, mark: Double(ratingUser.selectedSegmentIndex))
+        DevicesData.shared.devices[index!].feedBacks.append(feedback)
+        navigationController?.popViewController(animated: true)
+    }
 }

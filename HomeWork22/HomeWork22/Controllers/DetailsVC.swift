@@ -9,7 +9,6 @@ import UIKit
 
 class DetailsVC: UIViewController {
     var index: Int?
-    var section: Int?
     var deviceM: ModelDevices?
 
     @IBOutlet var mealStackView: UIStackView!
@@ -24,13 +23,10 @@ class DetailsVC: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        guard let section = section,
-              let index = index else { return }
-        let category = DevicesData.shared.devices[section]
-        let device = category?[index]
-        deviceM = device
+        guard let index = index else { return }
+        deviceM = DevicesData.shared.devices[index]
         updateUI(with: view.bounds.size)
-//        hideKeyboardWhenTappedAround()
+        showReviewBtn.isEnabled = deviceM?.feedBacks.count != 0 ? true : false
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -44,18 +40,24 @@ class DetailsVC: UIViewController {
         guard let deviсeModel = deviceM else { return }
         imageDevice.image = deviсeModel.image
         nameDevice.text = deviсeModel.name
-        ratingDevice.text = deviсeModel.rating
+        ratingDevice.text = CalculateRating.funcRating(index: index!)
         priceDevice.text = deviсeModel.price.description + " BYN"
         showReviewBtn.setTitle("View (\(deviсeModel.feedBacks.count)) reviews", for: .normal)
         showReviewBtn.isEnabled = deviсeModel.feedBacks.count != 0
     }
+    
+    @IBAction func viewAllReviewsBtn(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let reviewVC = storyboard.instantiateViewController(withIdentifier: "AllReviewsTVC") as? AllReviewsTVC else { return }
+        reviewVC.feedback = deviceM?.feedBacks
+        navigationController?.pushViewController(reviewVC, animated: true)
+    }
 
-
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let crVC = segue.destination as? CreateReviewVC else { return }
+    @IBAction func goToCreateReview(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let crVC = storyboard.instantiateViewController(withIdentifier: "CreateReviewVC") as? CreateReviewVC else { return }
         crVC.index = index
-        crVC.section = section
         crVC.deviceModel = deviceM
+        navigationController?.pushViewController(crVC, animated: true)
     }
 }

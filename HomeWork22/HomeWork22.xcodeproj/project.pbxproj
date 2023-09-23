@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		987D19602ABF10D00061828E /* funcRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D195F2ABF10D00061828E /* funcRating.swift */; };
+		987D19622ABF18F20061828E /* AllReviewsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D19612ABF18F20061828E /* AllReviewsTVC.swift */; };
+		987D19652ABF1CB80061828E /* ReviewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D19642ABF1CB80061828E /* ReviewsCell.swift */; };
 		988250502ABD9EA900E8FDC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9882504F2ABD9EA900E8FDC9 /* AppDelegate.swift */; };
 		988250522ABD9EA900E8FDC9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988250512ABD9EA900E8FDC9 /* SceneDelegate.swift */; };
 		988250572ABD9EA900E8FDC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 988250552ABD9EA900E8FDC9 /* Main.storyboard */; };
@@ -23,6 +26,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		987D195F2ABF10D00061828E /* funcRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = funcRating.swift; sourceTree = "<group>"; };
+		987D19612ABF18F20061828E /* AllReviewsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllReviewsTVC.swift; sourceTree = "<group>"; };
+		987D19642ABF1CB80061828E /* ReviewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsCell.swift; sourceTree = "<group>"; };
 		9882504C2ABD9EA900E8FDC9 /* HomeWork22.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeWork22.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9882504F2ABD9EA900E8FDC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		988250512ABD9EA900E8FDC9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +57,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		987D195E2ABF10BC0061828E /* Extencions */ = {
+			isa = PBXGroup;
+			children = (
+				9882507B2ABDDE0E00E8FDC9 /* ExtencionUIVC.swift */,
+			);
+			path = Extencions;
+			sourceTree = "<group>";
+		};
+		987D19632ABF1C980061828E /* ReviewsCell */ = {
+			isa = PBXGroup;
+			children = (
+				987D19642ABF1CB80061828E /* ReviewsCell.swift */,
+			);
+			path = ReviewsCell;
+			sourceTree = "<group>";
+		};
 		988250432ABD9EA900E8FDC9 = {
 			isa = PBXGroup;
 			children = (
@@ -78,7 +100,7 @@
 				988250582ABD9EAA00E8FDC9 /* Assets.xcassets */,
 				9882505D2ABD9EAA00E8FDC9 /* Info.plist */,
 				988250632ABD9EB300E8FDC9 /* App */,
-				9882507B2ABDDE0E00E8FDC9 /* ExtencionUIVC.swift */,
+				987D195E2ABF10BC0061828E /* Extencions */,
 			);
 			path = HomeWork22;
 			sourceTree = "<group>";
@@ -107,6 +129,7 @@
 				9882506F2ABDAD1D00E8FDC9 /* DevicesTVC.swift */,
 				988250792ABDD68D00E8FDC9 /* DetailsVC.swift */,
 				9882507D2ABDE2E000E8FDC9 /* CreateReviewVC.swift */,
+				987D19612ABF18F20061828E /* AllReviewsTVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -123,6 +146,7 @@
 		9882506B2ABDA13600E8FDC9 /* Sevices */ = {
 			isa = PBXGroup;
 			children = (
+				987D195F2ABF10D00061828E /* funcRating.swift */,
 				9882506C2ABDA14600E8FDC9 /* DataService.swift */,
 			);
 			path = Sevices;
@@ -131,6 +155,7 @@
 		988250712ABDADC900E8FDC9 /* CustomCell */ = {
 			isa = PBXGroup;
 			children = (
+				987D19632ABF1C980061828E /* ReviewsCell */,
 				988250782ABDAEC600E8FDC9 /* DevicesCell */,
 			);
 			path = CustomCell;
@@ -219,10 +244,13 @@
 				9882507A2ABDD68D00E8FDC9 /* DetailsVC.swift in Sources */,
 				988250702ABDAD1D00E8FDC9 /* DevicesTVC.swift in Sources */,
 				988250502ABD9EA900E8FDC9 /* AppDelegate.swift in Sources */,
+				987D19652ABF1CB80061828E /* ReviewsCell.swift in Sources */,
 				9882506A2ABDA03600E8FDC9 /* Feedback.swift in Sources */,
+				987D19622ABF18F20061828E /* AllReviewsTVC.swift in Sources */,
 				988250522ABD9EA900E8FDC9 /* SceneDelegate.swift in Sources */,
 				9882507E2ABDE2E000E8FDC9 /* CreateReviewVC.swift in Sources */,
 				988250762ABDAEBD00E8FDC9 /* DevicesCell.swift in Sources */,
+				987D19602ABF10D00061828E /* funcRating.swift in Sources */,
 				9882506D2ABDA14600E8FDC9 /* DataService.swift in Sources */,
 				9882507C2ABDDE0E00E8FDC9 /* ExtencionUIVC.swift in Sources */,
 			);

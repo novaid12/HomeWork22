@@ -8,7 +8,6 @@
 import UIKit
 
 struct ModelDevices {
-    
     let category: String
     let name: String
     let price: Double
@@ -16,5 +15,5 @@ struct ModelDevices {
 
     var feedBacks: [Feedback] = []
 
-    var rating = "⭐️"
+//    var rating = "⭐️"
 }

@@ -10,7 +10,7 @@ import UIKit
 struct Feedback {
     
     private let date = Date()
-    let name: String
+    let name: String?
     let text: String
     let mark: Double
     
