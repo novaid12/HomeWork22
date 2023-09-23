@@ -54,7 +54,7 @@ class CreateReviewVC: UIViewController, UITextViewDelegate {
         feedbackUser.layer.borderWidth = 1
         feedbackUser.layer.borderColor = CGColor(genericCMYKCyan: 1, magenta: 1, yellow: 1, black: 1, alpha: 1)
         feedbackUser.layer.cornerRadius = 5
-        navigationController?.navigationBar.isHidden = true
+        title = "Create review"
     }
 
     private func startKeyboardObserver() {

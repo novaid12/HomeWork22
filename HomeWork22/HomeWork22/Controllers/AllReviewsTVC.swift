@@ -12,7 +12,7 @@ class AllReviewsTVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        title = "All reviews"
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -39,7 +39,7 @@ class AllReviewsTVC: UITableViewController {
         for _ in 0 ..< Int(feedback![indexPath.row].mark) {
             cell.ratingLbl.text! += mark
         }
-
+        cell.textLbl.numberOfLines = 0
         cell.textLbl.text = feedback?[indexPath.row].text
 
         return cell
