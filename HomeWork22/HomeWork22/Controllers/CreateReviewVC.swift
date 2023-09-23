@@ -9,7 +9,6 @@ import UIKit
 
 class CreateReviewVC: UIViewController, UITextViewDelegate {
     var index: Int?
-//    var section: Int?
     var deviceModel: ModelDevices?
 
     @IBOutlet var scrollView: UIScrollView!
@@ -76,8 +75,6 @@ class CreateReviewVC: UIViewController, UITextViewDelegate {
         scrollView.contentInset = contentInsets
         scrollView.scrollIndicatorInsets = contentInsets
     }
-
-   
 
     @IBAction func saveData(_ sender: Any) {
         let feedback = Feedback(name: nameUser.text ?? "Unknown", text: feedbackUser.text, mark: Double(ratingUser.selectedSegmentIndex))

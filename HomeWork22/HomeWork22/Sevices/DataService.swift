@@ -15,7 +15,7 @@ class DevicesData {
     private init() {
         devices = [ModelDevices(category: "iPhone", name: "Apple iPhone 15 Pro Max (Titanium)", price: 7999, image: #imageLiteral(resourceName: "iPhone15ProMax"),
                                 feedBacks: [Feedback(name: "Сергей", text: "Хороший телефон! Как всегда ничего нового! Стоит, как крыло самолета! Лучший продукт на рынке!!!!", mark: 4.0),
-                                            Feedback(name: "Алексадр", text: "Сяоми лучше намного! Переоцененная фигня!!!", mark: 2.0)]),
+                                            Feedback(name: "Александр", text: "Сяоми лучше намного! Переоцененная фигня!!!", mark: 2.0)]),
                    ModelDevices(category: "iPhone", name: "Apple iPhone 15 Pro (Titanium blue)", price: 6999, image: #imageLiteral(resourceName: "iPhone15Pro")),
                    ModelDevices(category: "iPhone", name: "Apple iPhone 15 (Blue)", price: 5999, image: #imageLiteral(resourceName: "Iphone15")),
                    ModelDevices(category: "iPhone", name: "Apple iPhone 12 Pro Max (Silver)", price: 7999, image: #imageLiteral(resourceName: "iPhone12ProMax")),
