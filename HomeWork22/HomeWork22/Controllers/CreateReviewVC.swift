@@ -37,9 +37,9 @@ class CreateReviewVC: UIViewController, UITextViewDelegate {
     func textViewDidChange(_ feedbckUser: UITextView) {
         let currentText = feedbckUser.text ?? ""
         let currentLength = currentText.count
-        let boolean = currentLength > 20 ? true : false
-        lbl.isHidden = boolean
-        saveDataBtn.isEnabled = boolean
+        let boolean = currentLength > 20 ? false : true
+        lbl.isHidden = !boolean
+        saveDataBtn.isHidden = boolean
     }
 
     private func setupUI() {

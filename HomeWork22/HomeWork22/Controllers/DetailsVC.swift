@@ -18,22 +18,24 @@ class DetailsVC: UIViewController {
     @IBOutlet var ratingDevice: UILabel!
 
     @IBOutlet var showReviewBtn: UIButton!
+    @IBOutlet var createReview: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateUI()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         guard let index = index else { return }
         deviceM = DevicesData.shared.devices[index]
-        updateUI(with: view.bounds.size)
+        updateUI()
         showReviewBtn.isEnabled = deviceM?.feedBacks.count != 0 ? true : false
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        updateUI(with: size)
+        updateUI()
     }
 
-    private func updateUI(with size: CGSize) {
+    private func updateUI() {
         title = "Device details"
         guard let deviсeModel = deviceM else { return }
         imageDevice.image = deviсeModel.image
@@ -42,7 +44,10 @@ class DetailsVC: UIViewController {
         priceDevice.text = deviсeModel.price.description + " BYN"
         showReviewBtn.setTitle("View (\(deviсeModel.feedBacks.count)) reviews", for: .normal)
         showReviewBtn.isEnabled = deviсeModel.feedBacks.count != 0
-        imageDevice.layer.cornerRadius = 25
+        nameDevice.textColor = .white
+        priceDevice.textColor = .white
+        ratingDevice.textColor = .white
+//
     }
 
     @IBAction func viewAllReviewsBtn(_ sender: Any) {
