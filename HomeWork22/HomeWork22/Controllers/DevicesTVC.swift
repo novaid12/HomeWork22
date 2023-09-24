@@ -47,7 +47,6 @@ class DevicesTVC: UITableViewController {
         cell.imageDevice.image = device.image
         cell.imageDevice.layer.cornerRadius = 15
         cell.backgroundColor = #colorLiteral(red: 0.671189189, green: 0.6184870601, blue: 0.570966363, alpha: 1)
-        cell.layer.cornerRadius = 15
         cell.nameDevice.textColor = .white
         cell.priceDevice.textColor = .white
         cell.ratingDevice.textColor = .white

@@ -28,7 +28,6 @@ class AllReviewsTVC: UITableViewController {
         cell.nameLbl.textColor = .white
         cell.textLbl.textColor = .white
         cell.backgroundColor = #colorLiteral(red: 0.671189189, green: 0.6184870601, blue: 0.570966363, alpha: 1)
-        cell.layer.cornerRadius = 15
         cell.nameLbl.text = feedB?.name
         cell.ratingLbl.text = Int(feedB!.marker) == 0 ? mark : lol()
         func lol() -> String {
