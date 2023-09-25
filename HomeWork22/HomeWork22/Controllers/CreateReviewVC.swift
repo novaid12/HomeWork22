@@ -84,7 +84,7 @@ class CreateReviewVC: UIViewController, UITextViewDelegate {
         if nameUser.text == "" {
             name = "Unknown"
         } else { name = nameUser.text! }
-        let feedback = Feedback(name: name, text: feedbackUser.text, marker: Double(ratingUser.selectedSegmentIndex))
+        let feedback = Feedback(name: name, text: feedbackUser.text, marker: Double(ratingUser.selectedSegmentIndex + 1))
         DevicesData.shared.devices[index!].feedBacks.append(feedback)
         navigationController?.popViewController(animated: true)
     }

@@ -19,7 +19,7 @@ final class CalculateRating {
             }
             rating = rating / Double(device.feedBacks.count)
             let r = lround(rating)
-            for _ in 0 ..< r {
+            for _ in 1 ... r {
                 countStars += mark
             }
         } else { return "There are no reviews here yet" }
