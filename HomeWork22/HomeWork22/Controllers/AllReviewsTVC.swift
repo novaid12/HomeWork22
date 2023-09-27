@@ -7,16 +7,14 @@
 
 import UIKit
 
-class AllReviewsTVC: UITableViewController {
+final class AllReviewsTVC: UITableViewController {
     var feedback: [Feedback]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "All reviews"
     }
-
-    // MARK: - Table view data source
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return feedback!.count
     }
@@ -24,22 +22,18 @@ class AllReviewsTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewsCell", for: indexPath) as! ReviewsCell
         let mark = "⭐️"
-        let feedB = feedback?[indexPath.row]
-        cell.nameLbl.textColor = .white
-        cell.textLbl.textColor = .white
-        cell.backgroundColor = #colorLiteral(red: 0.671189189, green: 0.6184870601, blue: 0.570966363, alpha: 1)
-        cell.nameLbl.text = feedB?.name
-        cell.ratingLbl.text = Int(feedB!.marker) == 0 ? mark : lol()
-        func lol() -> String {
+        let feedBack = feedback?[indexPath.row]
+        cell.nameLbl.text = feedBack?.name
+        cell.ratingLbl.text = Int(feedBack!.marker) == 0 ? mark : addMark()
+        func addMark() -> String {
             var a = ""
-            for _ in 0 ..< Int(feedB!.marker) {
-                a += mark
+            for _ in 0 ..< Int(feedBack!.marker) {
+                a += "⭐️"
             }
             return a
         }
         cell.textLbl.numberOfLines = 0
-        cell.textLbl.text = feedB?.text
-
+        cell.textLbl.text = feedBack?.text
         return cell
     }
 }

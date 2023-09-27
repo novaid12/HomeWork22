@@ -7,11 +7,12 @@
 
 import UIKit
 
-class CreateReviewVC: UIViewController, UITextViewDelegate {
+final class CreateReviewVC: UIViewController, UITextViewDelegate {
     var index: Int?
+    var section: Int?
     var deviceModel: ModelDevices?
 
-    @IBOutlet var scrollView: UIScrollView!
+    @IBOutlet var centerYConstraint: NSLayoutConstraint!
     @IBOutlet var nameDevice: UILabel!
     @IBOutlet var imageDevice: UIImageView!
     @IBOutlet var priceDevice: UILabel!
@@ -43,10 +44,10 @@ class CreateReviewVC: UIViewController, UITextViewDelegate {
     }
 
     private func setupUI() {
-        guard let deviсeM = deviceModel else { return }
+        guard let deviсeM = deviceModel, let index = index, let section = section else { return }
         imageDevice.image = deviсeM.image
         nameDevice.text = deviсeM.name
-        ratingDevice.text = CalculateRating.funcRating(index: index!)
+        ratingDevice.text = CalculateRating.funcRating(index: index, section: section)
         priceDevice.text = deviсeM.price.description + " BYN"
         hideKeyboardWhenTappedAround()
         startKeyboardObserver()
@@ -65,18 +66,13 @@ class CreateReviewVC: UIViewController, UITextViewDelegate {
     }
 
     @objc private func keyboardWillShow(notification: Notification) {
-        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-            return
-        }
-        let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
-        scrollView.contentInset = contentInsets
-        scrollView.scrollIndicatorInsets = contentInsets
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        centerYConstraint.constant -= keyboardSize.height / 3
     }
 
-    @objc private func keyboardWillHide() {
-        let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
-        scrollView.contentInset = contentInsets
-        scrollView.scrollIndicatorInsets = contentInsets
+    @objc private func keyboardWillHide(notification: Notification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        centerYConstraint.constant += keyboardSize.height / 3
     }
 
     @IBAction func saveData(_ sender: Any) {
@@ -85,7 +81,10 @@ class CreateReviewVC: UIViewController, UITextViewDelegate {
             name = "Unknown"
         } else { name = nameUser.text! }
         let feedback = Feedback(name: name, text: feedbackUser.text, marker: Double(ratingUser.selectedSegmentIndex + 1))
-        DevicesData.shared.devices[index!].feedBacks.append(feedback)
+        guard let deviceModel = deviceModel, let idFeedback = deviceModel.feedback else { return }
+        guard var allReviews = DevicesData.shared.feedbacks[idFeedback] == nil ? [] : DevicesData.shared.feedbacks[idFeedback] else { return }
+        allReviews.append(feedback)
+        DevicesData.shared.feedbacks[idFeedback] = allReviews
         navigationController?.popViewController(animated: true)
     }
 }

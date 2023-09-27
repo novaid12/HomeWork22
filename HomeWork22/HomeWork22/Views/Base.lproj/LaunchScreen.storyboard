@@ -18,12 +18,12 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iStore" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TrO-Ik-ZQY">
                                 <rect key="frame" x="135" y="408.66666666666669" width="123" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.60344702009999995" green="0.56934458020000001" blue="0.52548325060000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="TrO-Ik-ZQY" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="n1m-Ii-80u"/>
                             <constraint firstItem="TrO-Ik-ZQY" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="p42-OY-1lk"/>

@@ -12,8 +12,5 @@ struct ModelDevices {
     let name: String
     let price: Double
     let image: UIImage?
-
-    var feedBacks: [Feedback] = []
-
-//    var rating = "⭐️"
+    var feedback: String?
 }

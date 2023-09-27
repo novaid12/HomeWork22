@@ -8,21 +8,24 @@
 import UIKit
 
 final class CalculateRating {
-    static func funcRating(index: Int) -> String {
-        let device = DevicesData.shared.devices[index]
+    static func funcRating(index: Int, section: Int) -> String {
+        guard let devices = DevicesData.shared.devices[section],
+              let idFeedbacks = devices[index].feedback else { return "There are no reviews here yet" }
+        
         var rating = 0.0
-        let mark = "⭐️"
         var countStars = ""
-        if device.feedBacks.count != 0 {
-            for i in 0 ..< device.feedBacks.count {
-                rating += device.feedBacks[i].marker
+        if let feedbacks = DevicesData.shared.feedbacks[idFeedbacks], feedbacks.count != 0 {
+            for i in 0 ..< feedbacks.count {
+                rating += feedbacks[i].marker
             }
-            rating = rating / Double(device.feedBacks.count)
+            rating = rating / Double(feedbacks.count)
             let r = lround(rating)
             for _ in 1 ... r {
-                countStars += mark
+                countStars += "⭐️"
             }
-        } else { return "There are no reviews here yet" }
+        } else {
+            return "There are no reviews here yet"
+        }
         return countStars
     }
 }
