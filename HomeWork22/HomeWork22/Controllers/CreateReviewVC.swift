@@ -23,6 +23,7 @@ final class CreateReviewVC: UIViewController, UITextViewDelegate {
     @IBOutlet var nameUser: UITextField!
     @IBOutlet var feedbackUser: UITextView!
 
+    @IBOutlet weak var stackViewPreview: UIStackView!
     @IBOutlet var ratingUser: UISegmentedControl!
 
     override func viewDidLoad() {
@@ -66,13 +67,11 @@ final class CreateReviewVC: UIViewController, UITextViewDelegate {
     }
 
     @objc private func keyboardWillShow(notification: Notification) {
-        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-        centerYConstraint.constant -= keyboardSize.height / 3
+        stackViewPreview.isHidden = true
     }
 
     @objc private func keyboardWillHide(notification: Notification) {
-        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-        centerYConstraint.constant += keyboardSize.height / 3
+        stackViewPreview.isHidden = false
     }
 
     @IBAction func saveData(_ sender: Any) {

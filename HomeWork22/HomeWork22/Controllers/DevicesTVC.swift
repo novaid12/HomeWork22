@@ -36,7 +36,6 @@ final class DevicesTVC: UITableViewController {
         cell.priceDevice.text = device[indexPath.row].price.description + " BYN"
         cell.ratingDevice.text = CalculateRating.funcRating(index: indexPath.row, section: indexPath.section)
         cell.imageDevice.image = device[indexPath.row].image
-
         return cell
     }
 
